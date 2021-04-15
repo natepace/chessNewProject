@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import './App.css';
 import styled, { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from './themes.js';
 import ChessComps from './components/chesscomps.js';
+import { ClubPage } from './components/ClubPage.js';
+import { NavBar } from './components/NavBar.js';
 import toggler from './button.png';
 function App() {
   const [theme, setTheme] = useState('light')
@@ -11,13 +14,27 @@ function App() {
   }
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-      <GlobalStyles />
       <StyledApp>
-        <div>
-          <img className="toggler" src={toggler} alt='toggle' onClick={() => themeToggler()} />
-        </div>
+        <GlobalStyles />
 
-        <ChessComps />
+        <Router>
+          {/* <div className="head"> */}
+          <NavBar />
+          <div className="darktoggle">
+            <img className="toggler" src={toggler} alt='toggle' onClick={() => themeToggler()} />
+          </div>
+          {/* </div> */}
+
+          <Switch>
+            <Route path='/player' component={ChessComps} />
+            <Route path='/club' component={ClubPage} />
+          </Switch>
+        </Router>
+
+
+
+
+        {/* <ChessComps /> */}
       </StyledApp>
 
     </ThemeProvider>
@@ -29,13 +46,23 @@ export default App;
 const StyledApp = styled.div`
 color: ${(props) => props.theme.fontColor};
 display:flex;
-width:100%;
+// width:100vw;
 flex-direction:column;
 justify-content:center;
 
 
+.darktoggle{
+  display:flex;
+  justify-content:flex-end;
+}
+
 .toggler{
+  
   width:40px;
   cursor:pointer;
+  
+  
 }
+
+
 `

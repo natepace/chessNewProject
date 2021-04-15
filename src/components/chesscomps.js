@@ -108,39 +108,44 @@ class ChessComps extends React.Component {
         })
     }
 
+
     render() {
         return (
             <StyledContainer>
-                <div className="usercard">
-                    <div>
-                        <img className="profilepic" src={this.state.avatar} alt='hikaru' />
-                    </div>
-                    <div>
+                <div className="wholepage">
 
-                        <h2>{this.state.title} {this.state.nameplate}</h2>
+
+                    <div className="usercard">
+                        <div className="picborder">
+                            <img className="profilepic" src={this.state.avatar} alt='hikaru' />
+                        </div>
+                        <div className="titledisplay">
+
+                            <h2>{this.state.title} {this.state.nameplate.charAt(0).toUpperCase() + this.state.nameplate.slice(1)}</h2>
+                        </div>
+                        <div>
+                            <h5>{this.state.name}</h5>
+                        </div>
+                        <div className="ratings">
+                            <h4>Ratings</h4>
+                            <p>Rapid: {this.state.chess_rapid}</p>
+                            <p>Blitz: {this.state.chess_blitz}</p>
+                            <p>Bullet: {this.state.chess_bullet}</p>
+                            <p>Puzzles: {this.state.tactics}</p>
+                        </div>
                     </div>
-                    <div>
-                        <h5>{this.state.name}</h5>
-                    </div>
-                    <div className="ratings">
-                        <h4>Ratings</h4>
-                        <p>Rapid: {this.state.chess_rapid}</p>
-                        <p>Blitz: {this.state.chess_blitz}</p>
-                        <p>Bullet: {this.state.chess_bullet}</p>
-                        <p>Puzzles: {this.state.tactics}</p>
+                    <div className="searchArea">
+                        <form onSubmit={this.handleSubmit}>
+                            <input placeholder="ex: 'natepace'"
+                                value={this.state.username}
+                                onChange={this.handleChanges}
+                            />
+                            <button className="findplayer">find player</button>
+                            {/* <img className="toggler" src={button} alt='toggle' onClick={() => this.handleSubmit()} /> */}
+                        </form>
                     </div>
                 </div>
-                <div className="searchArea">
-                    <form onSubmit={this.handleSubmit}>
-                        <input placeholder="ex: 'natepace'"
-                            value={this.state.username}
-                            onChange={this.handleChanges}
-                        />
-                        <button className="findplayer">find player</button>
-                        {/* <img className="toggler" src={button} alt='toggle' onClick={() => this.handleSubmit()} /> */}
-                    </form>
-                </div>
-            </StyledContainer>
+            </StyledContainer >
         )
     }
 }
@@ -148,16 +153,31 @@ class ChessComps extends React.Component {
 const StyledContainer = styled.div`
 display:flex;
 width:100%;
-flex-direction:column;
+// flex-direction:column;
 justify-content:center;
-.toggler{
-    width:40px;
-  }
+.wholepage{
+    display:flex;
+    flex-direction:column;
+    width:70%;
+    // justify-content:center;
+}
   .usercard{
-    //   width:500px;
+    //   width:70%;
       display:flex;
       justify-content:center;
       flex-direction:column;
+    background-color:${props => props.theme.secondColor}
+
+    
+  }
+.titledisplay{
+    width:200px;
+}
+
+  .picborder{
+     display:flex;
+     width:204px;
+
     
   }
   .searchArea{

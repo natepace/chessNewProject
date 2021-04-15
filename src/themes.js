@@ -4,7 +4,8 @@ export const lightTheme = {
     body: '#bfcba8',
     secondColor: '#5b8a72',
     thirdColor: '#56776c',
-    fontColor: '#52734d'
+    // fontColor: '#52734d'
+    fontColor: '#d1d4c9'
 
 }
 export const darkTheme = {
@@ -18,8 +19,16 @@ export const GlobalStyles = createGlobalStyle`
 
 body{
     background-color: ${props => props.theme.body};
-    display:flex;
-    justify-content:center;
+//     display:flex;
+//     justify-content:center;
+//    margin:0 auto;
+
+
+a{
+    text-decoration:none;
+    color:#d1d4c9;
+}
+
 }
 
 `
