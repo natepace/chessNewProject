@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import axios from 'axios';
 import button from '../button.png'
+import PlayerGames from './playergames.js'
 // import { handleChanges } from '../handlers/handlers.js';
 
 
@@ -114,26 +115,6 @@ class ChessComps extends React.Component {
             <StyledContainer>
                 <div className="wholepage">
 
-
-                    <div className="usercard">
-                        <div className="picborder">
-                            <img className="profilepic" src={this.state.avatar} alt='hikaru' />
-                        </div>
-                        <div className="titledisplay">
-
-                            <h2>{this.state.title} {this.state.nameplate.charAt(0).toUpperCase() + this.state.nameplate.slice(1)}</h2>
-                        </div>
-                        <div>
-                            <h5>{this.state.name}</h5>
-                        </div>
-                        <div className="ratings">
-                            <h4>Ratings</h4>
-                            <p>Rapid: {this.state.chess_rapid}</p>
-                            <p>Blitz: {this.state.chess_blitz}</p>
-                            <p>Bullet: {this.state.chess_bullet}</p>
-                            <p>Puzzles: {this.state.tactics}</p>
-                        </div>
-                    </div>
                     <div className="searchArea">
                         <form onSubmit={this.handleSubmit}>
                             <input placeholder="ex: 'natepace'"
@@ -141,10 +122,37 @@ class ChessComps extends React.Component {
                                 onChange={this.handleChanges}
                             />
                             <button className="findplayer">find player</button>
-                            {/* <img className="toggler" src={button} alt='toggle' onClick={() => this.handleSubmit()} /> */}
                         </form>
                     </div>
+                    <div className="usercard">
+                        <StyledPlayer>
+                            <div>
+                                <div className="picborder">
+                                    <img className="profilepic" src={this.state.avatar} alt='hikaru' />
+                                </div>
+                                <div className="titledisplay">
+
+                                    <h2>{this.state.title} {this.state.nameplate.charAt(0).toUpperCase() + this.state.nameplate.slice(1)}</h2>
+                                </div>
+                                <div className="userfullname">
+                                    <h5>{this.state.name}</h5>
+                                </div>
+                                <div className="ratings">
+                                    <h4>Ratings</h4>
+                                    <p>Rapid: {this.state.chess_rapid}</p>
+                                    <p>Blitz: {this.state.chess_blitz}</p>
+                                    <p>Bullet: {this.state.chess_bullet}</p>
+                                    <p>Puzzles: {this.state.tactics}</p>
+                                </div>
+                            </div>
+                            <PlayerGames playername={this.state.nameplate} />
+                        </StyledPlayer>
+
+                    </div>
+
+
                 </div>
+
             </StyledContainer >
         )
     }
@@ -158,14 +166,14 @@ justify-content:center;
 .wholepage{
     display:flex;
     flex-direction:column;
-    width:70%;
+    width:80%;
     // justify-content:center;
 }
   .usercard{
-    //   width:70%;
+    //   width:80%;
       display:flex;
-      justify-content:center;
-      flex-direction:column;
+      justify-content:space-evenly;
+    //   flex-direction:column;
     background-color:${props => props.theme.secondColor}
 
     
@@ -173,10 +181,14 @@ justify-content:center;
 .titledisplay{
     width:200px;
 }
+.userfullname{
+    width:200px;
+}
 
   .picborder{
      display:flex;
      width:204px;
+     
 
     
   }
@@ -189,6 +201,18 @@ justify-content:center;
   .findplayer{
       cursor:pointer;
   }
+  .ratings{
+      width:200px;
+      
+      
+  }
+`
+const StyledPlayer = styled.div`
+display:flex;
+flex-direction:row;
+width:100%;
+justify-content:space-evenly;
+
 `
 
 export default ChessComps;

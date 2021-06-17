@@ -11,7 +11,8 @@ export const lightTheme = {
 export const darkTheme = {
     body: '#152a38',
     secondColor: '#29435c',
-    thirdColor: '#556e53',
+    // thirdColor: '#556e53',
+    thirdColor: '#296666',
     fontColor: '#d1d4c9'
 }
 
