@@ -1,3 +1,5 @@
+### Project using Chess.com's public api to allow users of the site to compare head to head results of chess games vs their friends
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
