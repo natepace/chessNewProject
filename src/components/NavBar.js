@@ -7,8 +7,8 @@ export const NavBar = () => {
             <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
 
 
-                <Link to='/'>
-                    <div className='navText'><span className='whiteBox'>Home</span></div>
+                <Link to='/versus'>
+                    <div className='navText'><span className='whiteBox'>Player Versus</span></div>
                 </Link>
                 <Link to='/player'>
                     <div className='navText'><span className='whiteBox'>Player Search</span></div>

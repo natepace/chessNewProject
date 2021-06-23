@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme, GlobalStyles } from './themes.js';
 import ChessComps from './components/chesscomps.js';
+import PlayerVersus from './components/playerversus.js';
 import { ClubPage } from './components/ClubPage.js';
 import { NavBar } from './components/NavBar.js';
 import toggler from './button.png';
@@ -26,6 +27,7 @@ function App() {
           {/* </div> */}
 
           <Switch>
+            <Route path='/versus' component={PlayerVersus} />
             <Route path='/player' component={ChessComps} />
             <Route path='/club' component={ClubPage} />
           </Switch>
