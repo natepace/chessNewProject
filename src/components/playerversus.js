@@ -53,11 +53,24 @@ const PlayerVersus = () => {
     let newArray = []
     const handleSubmit = (e) => {
         e.preventDefault();
+        let one = `https://api.chess.com/pub/player/${players.player1}/games/${date}`
+        let two = `https://api.chess.com/pub/player/${players.player1}/games/${date2}`
         const newPlayers = {
             player1: formValues.player1,
             player2: formValues.player2
         }
+
         setPlayers(newPlayers)
+        const reqOne = axios.get(one)
+        const reqTwo = axios.get(two)
+        axios
+            .all([reqOne, reqTwo])
+            .then(axios.spread((...reses) => {
+                const resOne = Object.values(reses[0].data)
+                const resTwo = Object.values(reses[1].data)
+                console.log(resTwo[0])
+                // setGameValues(resOne[0].reverse, resTwo[0].reverse)
+            }))
         axios
             .get(`https://api.chess.com/pub/player/${players.player1}/games/${date}`)
 
@@ -113,7 +126,7 @@ const PlayerVersus = () => {
                             <a href={game.url} target={"blank"}>
                                 <div>
 
-                                    <p>{game.white.username.toLowerCase() === `${players.player2}` || game.black.username.toLowerCase() === `${players.player2}` ? <p>{game.white.username} {game.white.result} vs {game.black.username} </p> : null}</p>
+                                    <p>{game.white.username.toLowerCase() === `${players.player2}` || game.black.username.toLowerCase() === `${players.player2}` ? <p>{game.white.username} {game.white.result} vs {game.black.username} {game.black.result} </p> : null}</p>
                                 </div>
 
                             </a>
