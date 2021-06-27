@@ -5,8 +5,7 @@ import blackpawn from '../blackpawnpng.png'
 import crown from '../crownpng.png'
 import draw from '../drawpng.png'
 
-
-const GameCard = (props) => {
+const VersusCard = (props) => {
     const { playername, game } = props
     const whitePlayer = {
         name: game.white.username,
@@ -27,7 +26,6 @@ const GameCard = (props) => {
     const secondPlayer = {
 
     }
-    // console.log(playername, game.white.username)
     return (
         <StyleGame>
             <div className="gamecard">
@@ -69,7 +67,8 @@ const GameCard = (props) => {
         </StyleGame>
     )
 }
-export default GameCard
+
+export default VersusCard
 
 const StyleGame = styled.div`
 border: 1px solid black;

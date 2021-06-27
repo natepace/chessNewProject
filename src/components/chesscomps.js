@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components';
 import axios from 'axios';
+// import PlayerProfileFetch from '../common/playerprofilefetch.js'
 import button from '../button.png'
 import PlayerGames from './playergames.js'
+import PlayerCard from './playercard.js'
 // import { handleChanges } from '../handlers/handlers.js';
 
 
@@ -25,10 +27,7 @@ class ChessComps extends React.Component {
         this.setState({
 
             nameplate: 'hikaru',
-            // nameFirst: 'Hikaru',
-            // nameLast: 'Nakamura',
             name: 'Hikaru Nakamura',
-            // username: 'Hikaru',
             title: 'GM',
             avatar: 'https://images.chesscomfiles.com/uploads/v1/user/15448422.90503d66.200x200o.f323efa57fd0.jpeg',
             chess_rapid: 2800,
@@ -37,22 +36,11 @@ class ChessComps extends React.Component {
             tactics: 3421,
         })
     }
-    // const hikaru = {
-    //     name: 'Hikaru Nakamura',
-    //     username: 'Hikaru',
-    //     title: 'GM',
-    //     avatar: 'https://images.chesscomfiles.com/uploads/v1/user/15448422.90503d66.200x200o.f323efa57fd0.jpeg',
-    //     chess_rapid: 2800,
-    //     chess_blitz: 3173,
-    //     chess_bullet: 3322,
-    // }
-
-    // const [player, setPlayer] = useState(hikaru)
-
 
     handleSubmit = (e) => {
 
         e.preventDefault();
+
         let one = `https://api.chess.com/pub/player/${this.state.username}`
         let two = `https://api.chess.com/pub/player/${this.state.username}/stats`
 
@@ -65,7 +53,7 @@ class ChessComps extends React.Component {
                 const responseTwo = responses[1]
 
                 this.setState({
-                    // username: res.data.username,
+
                     name: responseOne.data.name,
                     title: responseOne.data.title,
                     avatar: responseOne.data.avatar,
@@ -80,27 +68,6 @@ class ChessComps extends React.Component {
             .catch(err => {
                 console.log(err)
             })
-
-        // console.log(this.state.username)
-        // axios
-        //     .get(`https://api.chess.com/pub/player/${this.state.username}`)
-        //     .then(res => {
-        //         console.log(res)
-        //         this.setState({
-        //             // username: res.data.username,
-        //             name: res.data.name,
-        //             title: res.data.title,
-        //             avatar: res.data.avatar,
-        //             // chess_rapid: res.data.chess_rapid,
-        //             // chess_blitz: res.data.chess_blitz,
-        //             chess_bullet: res.data.chess_bullet,
-        //             nameplate: res.data.username,
-        //         })
-        //     })
-        //     .catch(err => {
-        //         console.log(err)
-        //     })
-
     }
 
     handleChanges = (e) => {
@@ -126,25 +93,16 @@ class ChessComps extends React.Component {
                     </div>
                     <div className="usercard">
                         <StyledPlayer>
-                            <div>
-                                <div className="picborder">
-                                    <img className="profilepic" src={this.state.avatar} alt='hikaru' />
-                                </div>
-                                <div className="titledisplay">
-
-                                    <h2>{this.state.title} {this.state.nameplate.charAt(0).toUpperCase() + this.state.nameplate.slice(1)}</h2>
-                                </div>
-                                <div className="userfullname">
-                                    <h5>{this.state.name}</h5>
-                                </div>
-                                <div className="ratings">
-                                    <h4>Ratings</h4>
-                                    <p>Rapid: {this.state.chess_rapid}</p>
-                                    <p>Blitz: {this.state.chess_blitz}</p>
-                                    <p>Bullet: {this.state.chess_bullet}</p>
-                                    <p>Puzzles: {this.state.tactics}</p>
-                                </div>
-                            </div>
+                            <PlayerCard
+                                avatar={this.state.avatar}
+                                title={this.state.title}
+                                nameplate={this.state.nameplate}
+                                name={this.state.name}
+                                rapid={this.state.chess_rapid}
+                                blitz={this.state.chess_blitz}
+                                bullet={this.state.chess_bullet}
+                                puzzles={this.state.tactics}
+                            />
                             <PlayerGames playername={this.state.nameplate} />
                         </StyledPlayer>
 
@@ -197,6 +155,54 @@ justify-content:center;
     display:flex;
     justify-content:center;
     flex-direction:column;
+    form{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        font-size:20px;
+        background:${props => props.theme.secondColor};
+        margin-bottom:10px;
+        box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
+        border-radius:4px;
+        label{
+            color:${props => props.theme.bodyColor};
+
+        }
+        input{
+            font-size:20px;
+            height:30px;
+            border-radius:4px;
+            border: 1px solid transparent;
+            border-top:none;
+            border-bottom:1px solid #DDD;
+            box-shadow: inset 0 1px 2px rgba(0,0,0,.39), 0 -1px 1px #FFF, 0 1px 0 #FFF;
+            text-indent:14px;
+            background-color:white;
+            :focus { 
+                outline:none;
+                border-color:##296666;
+                box-shadow:0 0 8px #296666;
+                
+            }
+
+            
+        }
+        button{
+            border: outset 1px ${props => props.theme.secondColor};
+            border-radius:4px;
+            font-size:20px;
+            height:40px;
+            background-color: ${props => props.theme.thirdColor};
+            color: ${props => props.theme.fontColor};
+            :hover{
+                cursor:pointer;
+                background-color: ${props => props.theme.secondColor};
+                :active{
+                    border:4px;
+                    border-color: #296666;
+                    border-style:inset;
+                    
+                }
   }
   .findplayer{
       cursor:pointer;

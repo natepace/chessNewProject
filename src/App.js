@@ -7,7 +7,8 @@ import ChessComps from './components/chesscomps.js';
 import PlayerVersus from './components/playerversus.js';
 import { ClubPage } from './components/ClubPage.js';
 import { NavBar } from './components/NavBar.js';
-import toggler from './button.png';
+import darktoggle from './darkmode.png';
+import lighttoggle from './lightmode.png'
 function App() {
   const [theme, setTheme] = useState('light')
   const themeToggler = () => {
@@ -22,7 +23,9 @@ function App() {
           {/* <div className="head"> */}
           <NavBar />
           <div className="darktoggle">
-            <img className="toggler" src={toggler} alt='toggle' onClick={() => themeToggler()} />
+            {theme === 'light' ? <img className="toggler" src={darktoggle} alt='toggle' onClick={() => themeToggler()} />
+              : <img className="toggler" src={lighttoggle} alt='toggle' onClick={() => themeToggler()} />}
+
           </div>
           {/* </div> */}
 
@@ -56,12 +59,14 @@ justify-content:center;
 .darktoggle{
   display:flex;
   justify-content:flex-end;
+  
 }
 
 .toggler{
   
   width:40px;
   cursor:pointer;
+  
   
   
 }

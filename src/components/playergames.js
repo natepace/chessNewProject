@@ -21,14 +21,14 @@ const PlayerGames = (props) => {
 
     const [gameValues, setGameValues] = useState(initialGameValues)
     const { playername } = props
-    console.log(playername)
+    // console.log(playername)
     useEffect(() => {
         axios.get(`https://api.chess.com/pub/player/hikaru/games/2021/06`)
             .then(res => {
                 const games = Object.values(res.data)
                 setGameValues(games[0].reverse())
-                console.log(games[0])
-                console.log(res.data)
+                // console.log(games[0])
+                // console.log(res.data)
             }).catch(err => {
                 console.log(err.Response)
             })
@@ -61,7 +61,7 @@ const PlayerGames = (props) => {
     }
 
 
-    console.log(gameValues)
+    // console.log(gameValues)
     if (gameValues === initialGameValues) {
         return (<div></div>)
     }
