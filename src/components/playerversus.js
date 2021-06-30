@@ -313,7 +313,7 @@ const PlayerVersus = () => {
                     <VersusContainer>
                         <div className="playerTabs">
                             <PlayerProfileFetch
-                                username={formValues.player1}
+                                username2={formValues.player1}
                             />
                         </div>
                         <div>
@@ -344,7 +344,8 @@ const PlayerVersus = () => {
                         </div>
                         <div className="playerTabs">
                             <PlayerProfileFetch
-                                username={formValues.player2}
+                                username2={formValues.player2}
+                                username1={formValues.player1}
                             />
                         </div>
 
@@ -440,6 +441,9 @@ const VersusContainer = styled.div`
 display:flex;
 background-color: ${props => props.theme.secondColor};
 box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
+            @media (max-width: 960px) {
+                flex-direction: column;
+              }
 .tallyCard{
     display:flex;
 }
@@ -455,6 +459,7 @@ box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
  }
  .playerTabs{
      margin:20px;
+     width:22%;
      box-shadow: 0px 3px 3px 3px ${props => props.theme.body};
 
      h2,h4,h5,p{
@@ -464,6 +469,15 @@ box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
      h4,h5,p{
          margin:4px;
      }
+     @media (max-width: 960px) {
+        width:90%;
+        .profileCard{
+         display:flex;
+         
+     }
+      }
+     
+        
  }
 `
 
