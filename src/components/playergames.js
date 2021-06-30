@@ -145,12 +145,12 @@ text-align:justify;
     
 }
 `
-const StyleGame = styled.div`
-border: 1px solid black;
-margin: 1px;
-border-radius: 2px;
-:hover{
-    cursor:pointer;
-    background-color:${props => props.theme.thirdColor};
-}
-`
+// const StyleGame = styled.div`
+// border: 1px solid black;
+// margin: 1px;
+// border-radius: 2px;
+// :hover{
+//     cursor:pointer;
+//     background-color:${props => props.theme.thirdColor};
+// }
+// `
