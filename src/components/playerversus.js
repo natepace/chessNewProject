@@ -48,6 +48,76 @@ const PlayerVersus = () => {
             [e.target.name]: value
 
         })
+        let one = `https://api.chess.com/pub/player/${players.player1}/games/${date}`
+        let two = `https://api.chess.com/pub/player/${players.player1}/games/${date2}`
+        let three = `https://api.chess.com/pub/player/${players.player1}/games/${date3}`
+        let four = `https://api.chess.com/pub/player/${players.player1}/games/${date4}`
+        let five = `https://api.chess.com/pub/player/${players.player1}/games/${date5}`
+        let six = `https://api.chess.com/pub/player/${players.player1}/games/${date6}`
+        let seven = `https://api.chess.com/pub/player/${players.player1}/games/${date7}`
+        let eight = `https://api.chess.com/pub/player/${players.player1}/games/${date8}`
+        let nine = `https://api.chess.com/pub/player/${players.player1}/games/${date9}`
+        let ten = `https://api.chess.com/pub/player/${players.player1}/games/${date10}`
+        let eleven = `https://api.chess.com/pub/player/${players.player1}/games/${date11}`
+        let twelve = `https://api.chess.com/pub/player/${players.player1}/games/${date12}`
+        const newPlayers = {
+            player1: formValues.player1,
+            player2: formValues.player2
+        }
+
+        setPlayers(newPlayers)
+        const reqOne = axios.get(one)
+        const reqTwo = axios.get(two)
+        const reqthree = axios.get(three)
+        const reqfour = axios.get(four)
+        const reqfive = axios.get(five)
+        const reqsix = axios.get(six)
+        const reqseven = axios.get(seven)
+        const reqeight = axios.get(eight)
+        const reqnine = axios.get(nine)
+        const reqten = axios.get(ten)
+        const reqeleven = axios.get(eleven)
+        const reqtwelve = axios.get(twelve)
+
+        axios
+            .all([
+                reqOne, reqTwo, reqthree, reqfour,
+                reqfive, reqsix, reqseven, reqeight,
+                reqnine, reqten, reqeleven, reqtwelve
+            ])
+            .then(axios.spread((...reses) => {
+                const resOne = Object.values(reses[0].data)
+                const resTwo = Object.values(reses[1].data)
+                const resThree = Object.values(reses[2].data)
+                const resFour = Object.values(reses[3].data)
+                const resFive = Object.values(reses[4].data)
+                const resSix = Object.values(reses[5].data)
+                const resSeven = Object.values(reses[6].data)
+                const resEight = Object.values(reses[7].data)
+                const resNine = Object.values(reses[8].data)
+                const resTen = Object.values(reses[9].data)
+                const resEleven = Object.values(reses[10].data)
+                const resTwelve = Object.values(reses[11].data)
+                yearGames = resOne[0]
+
+                yearGames = yearGames.concat(resTwo[0])
+                yearGames = yearGames.concat(resThree[0])
+                yearGames = yearGames.concat(resFour[0])
+                yearGames = yearGames.concat(resFive[0])
+                yearGames = yearGames.concat(resSix[0])
+                yearGames = yearGames.concat(resSeven[0])
+                yearGames = yearGames.concat(resEight[0])
+                yearGames = yearGames.concat(resNine[0])
+                yearGames = yearGames.concat(resTen[0])
+                yearGames = yearGames.concat(resEleven[0])
+                yearGames = yearGames.concat(resTwelve[0])
+
+
+                setGameValues(yearGames)
+            }))
+            .catch(err => {
+                console.log(err.response)
+            })
     }
     let yearGames = []
     const handleSubmit = (e) => {
