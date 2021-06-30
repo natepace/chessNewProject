@@ -10,7 +10,7 @@ import { NavBar } from './components/NavBar.js';
 import darktoggle from './darkmode.png';
 import lighttoggle from './lightmode.png'
 function App() {
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState('dark')
   const themeToggler = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light')
   }
