@@ -7,7 +7,7 @@ import draw from '../drawpng.png'
 
 
 const GameCard = (props) => {
-    const { playername, game } = props
+    const { game } = props
     const whitePlayer = {
         name: game.white.username,
         rating: game.white.rating,
@@ -21,12 +21,12 @@ const GameCard = (props) => {
     }
     const op = '('
     const cp = ')'
-    const firstPlayer = {
+    // const firstPlayer = {
 
-    }
-    const secondPlayer = {
+    // }
+    // const secondPlayer = {
 
-    }
+    // }
     // console.log(playername, game.white.username)
     return (
         <StyleGame>
