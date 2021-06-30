@@ -51,6 +51,7 @@ const PlayerVersus = () => {
     }
     let yearGames = []
     const handleSubmit = (e) => {
+
         e.preventDefault();
         let one = `https://api.chess.com/pub/player/${players.player1}/games/${date}`
         let two = `https://api.chess.com/pub/player/${players.player1}/games/${date2}`
@@ -119,6 +120,9 @@ const PlayerVersus = () => {
 
                 setGameValues(yearGames)
             }))
+            .catch(err => {
+                console.log(err.response)
+            })
     }
 
 
@@ -129,9 +133,9 @@ const PlayerVersus = () => {
     let player1Wins = 0
     let player2Wins = 0
     let drawCount = 0
-    let player1BulletWins = 0
-    let player2BulletWins = 0
-    let bulletDrawCount = 0
+    // let player1BulletWins = 0
+    // let player2BulletWins = 0
+    // let bulletDrawCount = 0
 
     let testValues = gameValues
     let versusGames = []
@@ -183,26 +187,26 @@ const PlayerVersus = () => {
                     testValues[i].white.result === 'timevsinsufficient' ||
                     testValues[i].white.result === 'insufficient' ||
                     testValues[i].white.result === 'stalemate') {
-                    bulletDrawCount += 1
+                    // bulletDrawCount += 1
                 }
                 if (testValues[i].white.username.toLowerCase() === players.player1.toLowerCase()) {
                     if (testValues[i].white.result === 'win') {
-                        player1BulletWins += 1
+                        // player1BulletWins += 1
                     }
                 }
                 else if (testValues[i].black.username.toLowerCase() === players.player1.toLowerCase()) {
                     if (testValues[i].black.result === 'win') {
-                        player1BulletWins += 1
+                        // player1BulletWins += 1
                     }
                 }
                 if (testValues[i].black.username.toLowerCase() === players.player2.toLowerCase()) {
                     if (testValues[i].black.result === 'win') {
-                        player2BulletWins += 1
+                        // player2BulletWins += 1
                     }
                 }
                 else if (testValues[i].white.username.toLowerCase() === players.player2.toLowerCase()) {
                     if (testValues[i].white.result === 'win') {
-                        player2BulletWins += 1
+                        // player2BulletWins += 1
                     }
                 }
             }

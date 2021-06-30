@@ -20,6 +20,7 @@ export class PlayerProfileFetch extends React.Component {
 
         const requestOne = axios.get(one)
         const requestTwo = axios.get(two)
+
         axios
             .all([requestOne, requestTwo])
             .then(axios.spread((...responses) => {
@@ -39,10 +40,10 @@ export class PlayerProfileFetch extends React.Component {
                 })
             })
             )
-            .catch(err => {
-                console.log(err)
-            })
     }
+
+
+
 
     componentDidUpdate() {
         let one = `https://api.chess.com/pub/player/${this.props.username}`
@@ -70,7 +71,7 @@ export class PlayerProfileFetch extends React.Component {
             })
             )
             .catch(err => {
-                console.log(err)
+                console.log(err.response)
             })
     }
 
