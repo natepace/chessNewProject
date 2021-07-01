@@ -209,7 +209,7 @@ const PlayerVersus = () => {
 
     let testValues = gameValues
     let versusGames = []
-    let bulletGames = []
+    // let bulletGames = []
     for (let i = 0; i < testValues.length; i++) {
         // {game.white.username.toLowerCase() === `${players.player2}` || game.black.username.toLowerCase() === `${players.player2}` ?
 
