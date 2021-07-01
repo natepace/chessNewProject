@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import axios from 'axios'
 import dates from '../common/dates.js'
 import { PlayerProfileFetch } from '../common/playerprofilefetch.js'
-
+import versuslogo from '../versuslogo.jpg'
 import GameCard from './gamecard.js'
-
+import '../mediastyles/playerversusmedia.css'
 const PlayerVersus = () => {
     let datesArray = dates()
     let date = datesArray[0]
@@ -244,45 +244,44 @@ const PlayerVersus = () => {
             }
         }
     }
-    for (let i = 0; i < testValues.length; i++) {
-        // {game.white.username.toLowerCase() === `${players.player2}` || game.black.username.toLowerCase() === `${players.player2}` ?
+    // for (let i = 0; i < testValues.length; i++) {
+    //     // {game.white.username.toLowerCase() === `${players.player2}` || game.black.username.toLowerCase() === `${players.player2}` ?
 
-        if (testValues[i].white.username.toLowerCase() === players.player2.toLowerCase() || testValues[i].black.username.toLowerCase() === players.player2.toLowerCase()) {
-            if (testValues[i].time_class === 'bullet') {
+    //     if (testValues[i].white.username.toLowerCase() === players.player2.toLowerCase() || testValues[i].black.username.toLowerCase() === players.player2.toLowerCase()) {
+    //         if (testValues[i].time_class === 'bullet') {
 
 
-                bulletGames.push(testValues[i])
-                if (testValues[i].white.result === 'agreed' ||
-                    testValues[i].white.result === 'repetition' ||
-                    testValues[i].white.result === 'timevsinsufficient' ||
-                    testValues[i].white.result === 'insufficient' ||
-                    testValues[i].white.result === 'stalemate') {
-                    // bulletDrawCount += 1
-                }
-                if (testValues[i].white.username.toLowerCase() === players.player1.toLowerCase()) {
-                    if (testValues[i].white.result === 'win') {
-                        // player1BulletWins += 1
-                    }
-                }
-                else if (testValues[i].black.username.toLowerCase() === players.player1.toLowerCase()) {
-                    if (testValues[i].black.result === 'win') {
-                        // player1BulletWins += 1
-                    }
-                }
-                if (testValues[i].black.username.toLowerCase() === players.player2.toLowerCase()) {
-                    if (testValues[i].black.result === 'win') {
-                        // player2BulletWins += 1
-                    }
-                }
-                else if (testValues[i].white.username.toLowerCase() === players.player2.toLowerCase()) {
-                    if (testValues[i].white.result === 'win') {
-                        // player2BulletWins += 1
-                    }
-                }
-            }
-        }
-    }
-
+    //             bulletGames.push(testValues[i])
+    //             if (testValues[i].white.result === 'agreed' ||
+    //                 testValues[i].white.result === 'repetition' ||
+    //                 testValues[i].white.result === 'timevsinsufficient' ||
+    //                 testValues[i].white.result === 'insufficient' ||
+    //                 testValues[i].white.result === 'stalemate') {
+    //                 // bulletDrawCount += 1
+    //             }
+    //             if (testValues[i].white.username.toLowerCase() === players.player1.toLowerCase()) {
+    //                 if (testValues[i].white.result === 'win') {
+    //                     // player1BulletWins += 1
+    //                 }
+    //             }
+    //             else if (testValues[i].black.username.toLowerCase() === players.player1.toLowerCase()) {
+    //                 if (testValues[i].black.result === 'win') {
+    //                     // player1BulletWins += 1
+    //                 }
+    //             }
+    //             if (testValues[i].black.username.toLowerCase() === players.player2.toLowerCase()) {
+    //                 if (testValues[i].black.result === 'win') {
+    //                     // player2BulletWins += 1
+    //                 }
+    //             }
+    //             else if (testValues[i].white.username.toLowerCase() === players.player2.toLowerCase()) {
+    //                 if (testValues[i].white.result === 'win') {
+    //                     // player2BulletWins += 1
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
     return (
         <Window>
             <div className="wrapper">
@@ -316,16 +315,19 @@ const PlayerVersus = () => {
                                 username2={formValues.player1}
                             />
                         </div>
-                        <div>
-                            <ScrollGames>
-                                {versusGames.map(game => {
-                                    return (
-                                        <a href={game.url} target={"blank"}>
-                                            <GameCard game={game} />
-                                        </a>
-                                    )
-                                })}
-                            </ScrollGames>
+                        <div className="scrollHolder">
+                            {versusGames.length === 0 ? <img className="versuspic" src={versuslogo} alt='vs' /> :
+                                <ScrollGames>
+                                    {versusGames.map(game => {
+                                        return (
+                                            <a href={game.url} target={"blank"}>
+                                                <GameCard game={game} />
+                                            </a>
+                                        )
+                                    })}
+                                </ScrollGames>
+                            }
+
                             <div>
                                 <h1>Tally</h1>
                                 <div className='tallyCard'>
@@ -368,6 +370,7 @@ display:flex;
 width:100%;
 justify-content:center;
 font-family: 'Sarabun', sans-serif;
+
 .wrapper{
     display:flex;
     
@@ -378,7 +381,11 @@ font-family: 'Sarabun', sans-serif;
         flex-direction:column;
 
 
+
         .versusForm{
+            @media(max-width:960){
+                
+            }
             display:flex;
             justify-content:space-between;
             align-items:center;
@@ -438,12 +445,16 @@ font-family: 'Sarabun', sans-serif;
 `
 
 const VersusContainer = styled.div`
+@media (max-width: 960px) {
+    flex-direction: column;
+    // width:100vw;
+    
+  }
+
 display:flex;
 background-color: ${props => props.theme.secondColor};
 box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
-            @media (max-width: 960px) {
-                flex-direction: column;
-              }
+
 .tallyCard{
     display:flex;
 }
@@ -453,6 +464,13 @@ box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
     
 
    
+ }
+ .scrollHolder{
+    @media (max-width: 960px) {
+        width:100%;
+        padding:0;
+        
+      }
  }
  .profilepic{
    width:100%;  
@@ -470,15 +488,26 @@ box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
          margin:4px;
      }
      @media (max-width: 960px) {
-        width:90%;
+         margin:0;
+        img{
+            width:200px;
+            
+        }
+        width:100%;
         .profileCard{
          display:flex;
          
      }
-      }
-     
-        
+      }    
  }
+ .versuspic{
+     width:492px;
+     padding:4px;
+     height:400px;
+    //  box-shadow: 0px 0px 2px 2px ${props => props.theme.body};
+     
+ }
+
 `
 
 
@@ -498,6 +527,11 @@ box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
 
 
 const ScrollGames = styled.div`
+@media (max-width: 960px) {
+    width:100%;
+    padding:0;
+    
+  }
 margin:4px, 4px;
 padding:4px;
 background-color: ${props => props.theme.secondColor};

@@ -50,6 +50,7 @@ export default App;
 
 const StyledApp = styled.div`
 color: ${(props) => props.theme.fontColor};
+
 display:flex;
 // width:100vw;
 flex-direction:column;

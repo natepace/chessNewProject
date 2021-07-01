@@ -4,7 +4,7 @@ import whitepawn from '../whitepawnpng.png'
 import blackpawn from '../blackpawnpng.png'
 import crown from '../crownpng.png'
 import draw from '../drawpng.png'
-
+import versuslogo from '../versuslogo.jpg'
 
 const GameCard = (props) => {
     const { game } = props
@@ -21,6 +21,11 @@ const GameCard = (props) => {
     }
     const op = '('
     const cp = ')'
+    if (!game) {
+        return (
+            <img className="versuspic" src={versuslogo} alt='white pawn' />
+        )
+    }
     // const firstPlayer = {
 
     // }
