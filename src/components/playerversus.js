@@ -287,7 +287,7 @@ const PlayerVersus = () => {
             <div className="wrapper">
                 <div className="peel">
                     <form className="versusForm">
-                        <div>
+                        <div className="labelbox">
                             <label>Input Player 1:
                 <input
                                     placeholder="ex: Hikaru"
@@ -297,7 +297,7 @@ const PlayerVersus = () => {
                                     onChange={handleChanges}
                                 /></label>
                         </div>
-                        <div>
+                        <div className="labelbox">
                             <label>Input Player 2:
                 <input
                                     placeholder="ex: DanielNaroditsky"
@@ -386,6 +386,32 @@ font-family: 'Sarabun', sans-serif;
             @media(max-width:960){
                 
             }
+            @media (max-width: 560px) {
+                display:flex;
+               width:100%;
+               margin-top:10px;
+                flex-direction:column;
+                label{
+                    // font-size:70%;
+                   display:flex;
+                   align-items:center;
+                }
+                input{
+                    display:flex;
+                    margin-top:4px;
+                    margin-bottom:4px;
+                }
+                .labelbox{
+                    font-size:65%
+                }
+                button{
+                    margin-top:4px;
+                    margin-bottom:4px;
+                    width:100%;
+                }
+                
+            
+             }
             display:flex;
             justify-content:space-between;
             align-items:center;
@@ -499,13 +525,53 @@ box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
          
      }
       }    
+      @media (max-width: 560px) {
+        margin:0;
+        display:flex;
+        justify-content:center;
+       img{
+           width:100%;
+           
+       }
+       width:100%;
+       .profileCard{
+        display:flex;
+        flex-direction:row;
+        width:100%;
+        .picborder{
+            width:33%;
+        }
+        .ratings{
+            width:33%;
+            font-size:80%;
+            
+        }
+        .titledisplay{
+            width:33%;
+            font-size:60%;
+            height:50%;
+            
+            
+        }
+        .userfullname{
+            display:none;
+            // height:50%;
+            
+        }
+        
+    }
+     }
  }
  .versuspic{
      width:492px;
      padding:4px;
      height:400px;
     //  box-shadow: 0px 0px 2px 2px ${props => props.theme.body};
-     
+    @media (max-width: 960px) {
+        width:100%;
+        padding:0;
+        
+      }
  }
 
 `
@@ -530,6 +596,8 @@ const ScrollGames = styled.div`
 @media (max-width: 960px) {
     width:100%;
     padding:0;
+    margin-top:10px;
+    margin-bottom:10px;
     
   }
 margin:4px, 4px;

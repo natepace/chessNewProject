@@ -60,6 +60,9 @@ justify-content:center;
 .darktoggle{
   display:flex;
   justify-content:flex-end;
+  @media (max-width:560px){
+    display:none;
+  }
   
 }
 
