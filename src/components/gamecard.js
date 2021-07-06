@@ -5,7 +5,9 @@ import blackpawn from '../blackpawnpng.png'
 import crown from '../crownpng.png'
 import draw from '../drawpng.png'
 import versuslogo from '../versuslogo.jpg'
-
+import bulletpng from '../bulletpng.png'
+import blitzpng from '../blitzpng.png'
+import rapidpng from '../rapidpng.png'
 const GameCard = (props) => {
     const { game } = props
     const whitePlayer = {
@@ -36,9 +38,23 @@ const GameCard = (props) => {
     return (
         <StyleGame>
             <div className="gamecard">
+                <div className="timeHolder">
+                    {game.time_class === 'bullet' ?
+                        <img className="timepic" src={bulletpng} alt='bullet' /> :
+                        null
+                    }
+                    {game.time_class === 'blitz' ?
+                        <img className="timepic" src={blitzpng} alt='lightning' /> :
+                        null
+                    }
+                    {game.time_class === 'rapid' ?
+                        <img className="timepic" src={rapidpng} alt='stopwatch' /> :
+                        null
+                    }
+                </div>
                 {/* {game.white.username.toLowerCase() === `${playername}` ? <p>vs {game.black.username}</p> : <p>vs {game.white.username}</p>} */}
                 {/* <p>{game.white.username} {game.white.result === "win" ? <p>won vs</p> : <p>lost vs</p>} {game.black.username}</p> */}
-                <div>
+                <div className="whitenblack">
                     <div className="player">
                         <img className="blackpawn" src={whitepawn} alt='white pawn' />
                         <p>{whitePlayer.name}{op}{whitePlayer.rating}{cp}</p>
@@ -61,9 +77,20 @@ const GameCard = (props) => {
                     </div>
 
                 </div>
-                <div>
-                    <p>{game.time_class}</p>
-                </div>
+                {/* <div className="timeHolder">
+                    {game.time_class === 'bullet' ?
+                        <img className="timepic" src={bulletpng} alt='bullet' /> :
+                        null
+                    }
+                    {game.time_class === 'blitz' ?
+                        <img className="timepic" src={blitzpng} alt='lightning' /> :
+                        null
+                    }
+                    {game.time_class === 'rapid' ?
+                        <img className="timepic" src={rapidpng} alt='stopwatch' /> :
+                        null
+                    }
+                </div> */}
                 <div>
 
                 </div>
@@ -87,7 +114,32 @@ p{
     cursor:pointer;
     background-color:${props => props.theme.thirdColor};
 }
+.whitenblack{
+    display:flex;
+    flex-direction:column;
+    align-content:center;
+}
 .player{
     display:flex;
+    align-content:center;
+    margin-top:8px;
+        margin-bottom:8px;
+    p{
+        margin-bottom:0px;
+    }
 }
+.timeHolder{
+    display:flex;
+    align-items:center;
+    margin-left:3%;
+    margin-right:3%;
+    .timepic{
+    width:50px;
+    // margin-left:8%;
+    // margin-right:8%;
+    opacity:.8;
+    
+}
+}
+
 `

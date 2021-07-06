@@ -27,9 +27,13 @@ const PlayerVersus = () => {
         player1: 'hikaru',
         player2: 'danielnaroditsky'
     }
+    const initialForm = {
+        player1: '',
+        player2: ''
+    }
     const [gameValues, setGameValues] = useState(initialPlayers)
     const [players, setPlayers] = useState(initialPlayers)
-    const [formValues, setFormValues] = useState(initialPlayers)
+    const [formValues, setFormValues] = useState(initialForm)
     useEffect(() => {
         axios.get(`https://api.chess.com/pub/player/hikaru/games/2021/06`)
             .then(res => {
@@ -288,9 +292,9 @@ const PlayerVersus = () => {
                 <div className="peel">
                     <form className="versusForm">
                         <div className="labelbox">
-                            <label>Input Player 1:
-                <input
-                                    placeholder="ex: Hikaru"
+                            <label>
+                                <input
+                                    placeholder="- Input Player 1 -"
                                     type='text'
                                     name='player1'
                                     value={formValues.player1}
@@ -298,9 +302,9 @@ const PlayerVersus = () => {
                                 /></label>
                         </div>
                         <div className="labelbox">
-                            <label>Input Player 2:
-                <input
-                                    placeholder="ex: DanielNaroditsky"
+                            <label>
+                                <input
+                                    placeholder="- Input Player 2 -"
                                     type='text'
                                     name='player2'
                                     value={formValues.player2}
@@ -312,7 +316,7 @@ const PlayerVersus = () => {
                     <VersusContainer>
                         <div className="playerTabs">
                             <PlayerProfileFetch
-                                username2={formValues.player1}
+                                username2={players.player1}
                             />
                         </div>
                         <div className="scrollHolder">
@@ -346,8 +350,8 @@ const PlayerVersus = () => {
                         </div>
                         <div className="playerTabs">
                             <PlayerProfileFetch
-                                username2={formValues.player2}
-                                username1={formValues.player1}
+                                username2={players.player2}
+                                username1={players.player1}
                             />
                         </div>
 
@@ -400,6 +404,7 @@ font-family: 'Sarabun', sans-serif;
                     display:flex;
                     margin-top:4px;
                     margin-bottom:4px;
+                    align-items:center;
                 }
                 .labelbox{
                     font-size:65%
@@ -449,20 +454,21 @@ font-family: 'Sarabun', sans-serif;
                 border: outset 1px ${props => props.theme.secondColor};
                 border-radius:4px;
                 font-size:20px;
+                margin-left:4px;
                 height:40px;
                 background-color: ${props => props.theme.thirdColor};
                 color: ${props => props.theme.fontColor};
                 :hover{
                     cursor:pointer;
-                    background-color: ${props => props.theme.secondColor};
+                    background-color: ${props => props.theme.body};
                     :active{
                         border:4px;
+                        background-color: ${props => props.theme.secondColor};
                         border-color: #296666;
                         border-style:inset;
-                        
+                        padding:3px;
                     }
                 }
-               
             }
         }
     }

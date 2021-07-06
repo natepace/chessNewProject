@@ -6,16 +6,16 @@ export const NavBar = () => {
         <StyledNavbar>
             <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
 
-
-                <Link to='/versus'>
-                    <div className='navText'><span className='whiteBox'>Player Versus</span></div>
-                </Link>
                 <Link to='/player'>
                     <div className='navText'><span className='whiteBox'>Player Search</span></div>
                 </Link>
-                <Link to='/club'>
-                    <div className='navText'><span className='whiteBox'>Club Search</span></div>
+                <Link to='/versus'>
+                    <div className='navText'><span className='whiteBox'>Player Versus</span></div>
                 </Link>
+
+                {/* <Link to='/club'>
+                    <div className='navText'><span className='whiteBox'>Club Search</span></div>
+                </Link> */}
 
             </div>
         </StyledNavbar>

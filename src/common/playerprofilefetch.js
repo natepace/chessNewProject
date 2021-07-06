@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios';
+import noPic from '../defaultprofpic.png'
 export class PlayerProfileFetch extends React.Component {
     state = {
 
@@ -87,7 +88,10 @@ export class PlayerProfileFetch extends React.Component {
         return (
             <div className="profileCard">
                 <div className="picborder">
-                    <img className="profilepic" src={this.state.avatar} alt='hikaru' />
+                    {!this.state.avatar ?
+                        <img className="profilepic" src={noPic} alt='defaultpicture' /> :
+                        <img className="profilepic" src={this.state.avatar} alt='profilepicture' />}
+
                 </div>
                 <div className="titledisplay">
 

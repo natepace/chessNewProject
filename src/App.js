@@ -31,7 +31,7 @@ function App() {
 
           <Switch>
             <Route path='/versus' component={PlayerVersus} />
-            <Route path='/player' component={ChessComps} />
+            <Route path='/' component={ChessComps} />
             <Route path='/club' component={ClubPage} />
           </Switch>
         </Router>

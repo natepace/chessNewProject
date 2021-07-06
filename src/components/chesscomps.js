@@ -5,6 +5,8 @@ import axios from 'axios';
 import button from '../button.png'
 import PlayerGames from './playergames.js'
 import PlayerCard from './playercard.js'
+import { PlayerProfileFetch } from '../common/playerprofilefetch.js'
+import { render } from '@testing-library/react';
 // import { handleChanges } from '../handlers/handlers.js';
 
 
@@ -74,24 +76,25 @@ class ChessComps extends React.Component {
         this.setState({
             username: e.target.value
         })
+
     }
-
-
     render() {
         return (
             <StyledContainer>
                 <div className="wholepage">
+                    <div className="wrapper">
 
-                    <div className="searchArea">
-                        <form onSubmit={this.handleSubmit}>
-                            <input placeholder="ex: 'natepace'"
-                                value={this.state.username}
-                                onChange={this.handleChanges}
-                            />
-                            <button className="findplayer">find player</button>
-                        </form>
-                    </div>
-                    <div className="usercard">
+                        <div className="searchArea">
+                            <form onSubmit={this.handleSubmit}>
+                                <input placeholder="ex: 'natepace'"
+                                    value={this.state.username}
+                                    onChange={this.handleChanges}
+                                />
+                                <button className="findplayer">find player</button>
+                            </form>
+                        </div>
+                        <div className="playerAndGames">
+                            {/* <div className="usercard">
                         <StyledPlayer>
                             <PlayerCard
                                 avatar={this.state.avatar}
@@ -106,11 +109,18 @@ class ChessComps extends React.Component {
                             <PlayerGames playername={this.state.nameplate} />
                         </StyledPlayer>
 
+                    </div> */}
+                            <div className="playerTabs">
+                                <PlayerProfileFetch
+                                    username2={this.state.nameplate}
+                                />
+
+                            </div>
+                            <PlayerGames playername={this.state.nameplate} />
+
+                        </div>
                     </div>
-
-
                 </div>
-
             </StyledContainer >
         )
     }
@@ -119,39 +129,89 @@ class ChessComps extends React.Component {
 const StyledContainer = styled.div`
 display:flex;
 width:100%;
-// flex-direction:column;
 justify-content:center;
 .wholepage{
     display:flex;
     flex-direction:column;
     width:80%;
-    // justify-content:center;
 }
-  .usercard{
-    //   width:80%;
-      display:flex;
-      justify-content:space-evenly;
-    //   flex-direction:column;
-    background-color:${props => props.theme.secondColor}
-
+.wrapper{
+    display:flex;
+    flex-direction:column;
+}
+.playerAndGames{
+    display:flex;
+    flex-direction:row;
+    background-color: ${props => props.theme.secondColor};
+    box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
+    justify-content:space-evenly;
+    .profilepic{
+        width:100%;  
+      }
+    .playerTabs{
+        margin:20px;
+        width:22%;
+        box-shadow: 0px 3px 3px 3px ${props => props.theme.body};
     
-  }
-.titledisplay{
-    width:200px;
-}
-.userfullname{
-    width:200px;
+        h2,h4,h5,p{
+            padding-left:4px;
+            padding-right:4px;
+        }
+        h4,h5,p{
+            margin:4px;
+        }
+        @media (max-width: 960px) {
+            margin:0;
+           img{
+               width:200px;
+               
+           }
+           width:100%;
+           .profileCard{
+            display:flex;
+            
+        }
+         }    
+         @media (max-width: 560px) {
+           margin:0;
+           display:flex;
+           justify-content:center;
+          img{
+              width:100%;
+              
+          }
+          width:100%;
+          .profileCard{
+           display:flex;
+           flex-direction:row;
+           width:100%;
+           .picborder{
+               width:33%;
+           }
+           .ratings{
+               width:33%;
+               font-size:80%;
+               
+           }
+           .titledisplay{
+               width:33%;
+               font-size:60%;
+               height:50%;
+               
+               
+           }
+           .userfullname{
+               display:none;
+               // height:50%;
+               
+           }
+           
+       }
+        }
+    }
 }
 
-  .picborder{
-     display:flex;
-     width:204px;
-     
-
-    
-  }
   .searchArea{
-    // width:500px;
     display:flex;
     justify-content:center;
     flex-direction:column;
@@ -191,34 +251,40 @@ justify-content:center;
             border: outset 1px ${props => props.theme.secondColor};
             border-radius:4px;
             font-size:20px;
+            margin-left:4px;
             height:40px;
             background-color: ${props => props.theme.thirdColor};
             color: ${props => props.theme.fontColor};
             :hover{
                 cursor:pointer;
-                background-color: ${props => props.theme.secondColor};
+                background-color: ${props => props.theme.body};
                 :active{
                     border:4px;
+                    background-color: ${props => props.theme.secondColor};
                     border-color: #296666;
                     border-style:inset;
-                    
+                    padding:3px;
                 }
+            }
+        }
   }
   .findplayer{
       cursor:pointer;
   }
-  .ratings{
-      width:200px;
-      
-      
-  }
-`
-const StyledPlayer = styled.div`
-display:flex;
-flex-direction:row;
-width:100%;
-justify-content:space-evenly;
 
+
+  
 `
+
+
+
+// const StyledPlayer = styled.div`
+// display:flex;
+// flex-direction:row;
+// width:100%;
+// justify-content:space-evenly;
+
+
+// `
 
 export default ChessComps;

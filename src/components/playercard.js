@@ -4,7 +4,7 @@ import React from 'react'
 const PlayerCard = props => {
     const { avatar, title, nameplate, name, rapid, blitz, bullet, puzzles } = props
     return (
-        <div>
+        <div className="profileCard">
             <div className="picborder">
                 <img className="profilepic" src={avatar} alt='hikaru' />
             </div>
@@ -28,3 +28,4 @@ const PlayerCard = props => {
 
 
 export default PlayerCard
+
