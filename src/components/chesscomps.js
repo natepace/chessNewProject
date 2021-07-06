@@ -4,9 +4,9 @@ import axios from 'axios';
 // import PlayerProfileFetch from '../common/playerprofilefetch.js'
 import button from '../button.png'
 import PlayerGames from './playergames.js'
-import PlayerCard from './playercard.js'
+// import PlayerCard from './playercard.js'
 import { PlayerProfileFetch } from '../common/playerprofilefetch.js'
-import { render } from '@testing-library/react';
+// import { render } from '@testing-library/react';
 // import { handleChanges } from '../handlers/handlers.js';
 
 
