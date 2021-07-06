@@ -332,7 +332,7 @@ const PlayerVersus = () => {
                                 </ScrollGames>
                             }
 
-                            <div>
+                            <div className="scoreTally">
                                 <h1>Tally</h1>
                                 <div className='tallyCard'>
                                     <h2>{players.player1} wins:</h2>
@@ -486,9 +486,22 @@ const VersusContainer = styled.div`
 display:flex;
 background-color: ${props => props.theme.secondColor};
 box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
-
-.tallyCard{
+.scoreTally{
     display:flex;
+    justify-content:center;
+    flex-direction:column;
+}
+h1{
+    justify-content:center;
+    display:flex;
+}
+.tallyCard{
+    justify-content:center;
+    display:flex;
+    @media (max-width: 560px) {
+        font-size:80%;
+        
+      }
 }
 .picborder{
     display:flex;
