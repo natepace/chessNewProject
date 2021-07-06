@@ -118,6 +118,9 @@ p{
     display:flex;
     flex-direction:column;
     align-content:center;
+    @media (max-width: 560px) {
+        font-size:80%;
+    }
 }
 .player{
     display:flex;
@@ -138,7 +141,9 @@ p{
     // margin-left:8%;
     // margin-right:8%;
     opacity:.8;
-    
+    @media (max-width: 560px) {
+        width:35px;
+    }
 }
 }
 

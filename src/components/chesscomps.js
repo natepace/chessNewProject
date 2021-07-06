@@ -130,25 +130,36 @@ const StyledContainer = styled.div`
 display:flex;
 width:100%;
 justify-content:center;
+
 .wholepage{
     display:flex;
     flex-direction:column;
     width:80%;
+    @media (max-width: 560px) {
+    width:98%;
+    }
 }
 .wrapper{
     display:flex;
     flex-direction:column;
 }
 .playerAndGames{
+    
     display:flex;
     flex-direction:row;
     background-color: ${props => props.theme.secondColor};
     box-shadow: 3px 3px 3px 3px rgba(0.5, 0.5, 0.5, 0.5);
     justify-content:space-evenly;
+    @media (max-width: 960px) {
+        flex-direction: column;
+        // width:100vw;
+        
+      }
     .profilepic{
         width:100%;  
       }
     .playerTabs{
+        
         margin:20px;
         width:22%;
         box-shadow: 0px 3px 3px 3px ${props => props.theme.body};
@@ -162,6 +173,7 @@ justify-content:center;
         }
         @media (max-width: 960px) {
             margin:0;
+            
            img{
                width:200px;
                
@@ -171,6 +183,7 @@ justify-content:center;
             display:flex;
             
         }
+        
          }    
          @media (max-width: 560px) {
            margin:0;
@@ -267,6 +280,33 @@ justify-content:center;
                 }
             }
         }
+        @media (max-width: 560px) {
+            display:flex;
+           width:100%;
+           margin-top:10px;
+            flex-direction:column;
+            label{
+                // font-size:70%;
+               display:flex;
+               align-items:center;
+            }
+            input{
+                display:flex;
+                margin-top:4px;
+                margin-bottom:4px;
+                align-items:center;
+            }
+            .labelbox{
+                font-size:65%
+            }
+            button{
+                margin-top:4px;
+                margin-bottom:4px;
+                width:100%;
+            }
+            
+        
+         }
   }
   .findplayer{
       cursor:pointer;

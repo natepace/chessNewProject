@@ -433,6 +433,17 @@ export default PlayerGames
 
 const Gamesdiv = styled.div`
 width:500px;
+@media (max-width: 960px) {
+    width:100%;
+    padding:0;
+    
+    margin-top:10px;
+    margin-bottom:10px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    
+  }
 // float:right;
 
         button{
@@ -463,6 +474,8 @@ const ScrollGames = styled.div`
     padding:0;
     margin-top:10px;
     margin-bottom:10px;
+    margin-left:0;
+    
     
   }
 margin:10px;
