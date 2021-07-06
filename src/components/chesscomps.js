@@ -305,6 +305,7 @@ justify-content:center;
                 margin-bottom:4px;
                 margin-left:0;
                 margin-right:0;
+                
                 width:75%;
             }
             
