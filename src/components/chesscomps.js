@@ -295,6 +295,7 @@ justify-content:center;
                 margin-top:4px;
                 margin-bottom:4px;
                 align-items:center;
+                width:75%;
             }
             .labelbox{
                 font-size:65%
@@ -302,7 +303,9 @@ justify-content:center;
             button{
                 margin-top:4px;
                 margin-bottom:4px;
-                width:100%;
+                margin-left:0;
+                margin-right:0;
+                width:75%;
             }
             
         
