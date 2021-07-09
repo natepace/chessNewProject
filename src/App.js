@@ -30,8 +30,8 @@ function App() {
           {/* </div> */}
 
           <Switch>
-            <Route path='/versus' component={PlayerVersus} />
-            <Route path='/' component={ChessComps} />
+            <Route path='/' component={PlayerVersus} />
+            <Route path='/search' component={ChessComps} />
             <Route path='/club' component={ClubPage} />
           </Switch>
         </Router>
