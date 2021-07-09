@@ -9,6 +9,7 @@ import { ClubPage } from './components/ClubPage.js';
 import { NavBar } from './components/NavBar.js';
 import darktoggle from './darkmode.png';
 import lighttoggle from './lightmode.png'
+import github from './github_white.png'
 function App() {
   const [theme, setTheme] = useState('dark')
   const themeToggler = () => {
@@ -22,10 +23,15 @@ function App() {
         <Router>
           {/* <div className="head"> */}
           <NavBar />
-          <div className="darktoggle">
-            {theme === 'light' ? <img className="toggler" src={darktoggle} alt='toggle' onClick={() => themeToggler()} />
-              : <img className="toggler" src={lighttoggle} alt='toggle' onClick={() => themeToggler()} />}
+          <div className="buttons">
+            <a href="https://github.com/natepace/chessNewProject" target="_blank" rel="noreferrer" >
+              <img className="toggler" src={github} alt="github" />
+            </a>
+            <div className="darktoggle">
+              {theme === 'light' ? <img className="toggler" src={darktoggle} alt='toggle' onClick={() => themeToggler()} />
+                : <img className="toggler" src={lighttoggle} alt='toggle' onClick={() => themeToggler()} />}
 
+            </div>
           </div>
           {/* </div> */}
 
@@ -55,7 +61,10 @@ display:flex;
 // width:100vw;
 flex-direction:column;
 justify-content:center;
-
+.buttons{
+  display:flex;
+  justify-content:space-between;
+}
 
 .darktoggle{
   display:flex;
@@ -67,8 +76,8 @@ justify-content:center;
 }
 
 .toggler{
-  
-  width:40px;
+  margin:4px;
+  width:36px;
   cursor:pointer;
   
   
