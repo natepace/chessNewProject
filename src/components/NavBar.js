@@ -6,7 +6,7 @@ export const NavBar = () => {
         <StyledNavbar>
             <div style={{ display: 'flex', justifyContent: 'space-evenly', alignItems: 'center' }}>
 
-                <Link to='/player'>
+                <Link to='/'>
                     <div className='navText'><span className='whiteBox'>Player Search</span></div>
                 </Link>
                 <Link to='/versus'>

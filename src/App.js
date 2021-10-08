@@ -35,11 +35,14 @@ function App() {
           </div>
           {/* </div> */}
 
+          <Route exact path='/' component={ChessComps} />
+
           <Switch>
-            <Route path='/' component={PlayerVersus} />
-            <Route path='/search' component={ChessComps} />
+            <Route path='/versus' component={PlayerVersus} />
             <Route path='/club' component={ClubPage} />
           </Switch>
+
+
         </Router>
 
 
